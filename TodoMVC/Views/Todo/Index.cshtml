@@ -4,34 +4,21 @@
     ViewBag.Title = "Todos";
 }
 
-<h2>Index</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Text)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeCreated)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Text)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeCreated)
-        </td>
-    </tr>
-}
-
-</table>
+<div class="todos-holder">
+    @using (Html.BeginForm("Create", "Todo", FormMethod.Post)) {
+        <input type="text" />
+        <br />
+        <input type="button" class="btn btn-primary" value="Add Todo" />
+    }
+    <ul class="todos col-centered">
+        @foreach (var item in Model) {
+            string doneClass = item.IsDone ? "todo-done" : "";
+            <li class="todo  @doneClass">
+                <input type="checkbox" checked="@item.IsDone" class="todo-checkbox" />
+                <span>
+                    @item.Text
+                </span>
+            </li>
+        }
+    </ul>
+</div>

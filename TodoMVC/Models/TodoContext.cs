@@ -39,7 +39,7 @@ namespace TodoMVC.Models {
     /// <summary>
     /// Derived database strategy
     /// </summary>
-    class TodoDbInit : DropCreateDatabaseIfModelChanges<TodoContext> {
+    class TodoDbInit : DropCreateDatabaseAlways<TodoContext> {
         protected override void Seed(TodoContext context) {
             base.Seed(context);
 
@@ -55,9 +55,15 @@ namespace TodoMVC.Models {
                 IsDone = true,
                 TimeCreated = DateTime.Now - TimeSpan.FromDays(1)
             };
+            Todo longTodo = new Todo() {
+                Text = "A very very long todo text that never seems to end, maybe this will overflow?",
+                IsDone = false,
+                TimeCreated = DateTime.Now
+            };
 
             context.Todos.Add(todo);
             context.Todos.Add(doneTodo);
+            context.Todos.Add(longTodo);
 
             context.SaveChanges();
         }

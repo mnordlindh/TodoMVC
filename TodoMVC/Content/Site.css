@@ -5,8 +5,12 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    max-width: 720px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 2.2;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -14,4 +18,46 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.todos-holder {
+    text-align: center;
+}
+
+.todos-holder input[type="text"], input[type="button"] {
+    width: 100%;
+    max-width: none;
+    font-size: 28px;
+    font-weight: 200;
+}
+
+.todos {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.todo {
+    position: relative;
+    padding-left: 40px;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.todo-done span {
+    text-decoration: line-through;
+}
+
+.todo-checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto !important;
+    width: 25px;
+    height: 25px;
 }
