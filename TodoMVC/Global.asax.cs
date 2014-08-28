@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using TodoMVC.Models;
 
 namespace TodoMVC {
     public class MvcApplication : System.Web.HttpApplication {
@@ -13,6 +14,16 @@ namespace TodoMVC {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_BeginRequest() {
+            HttpContext.Current.Items["_Context"] = new TodoContext();
+        }
+
+        protected void Application_EndRequest() {
+            var context = HttpContext.Current.Items["_Context"] as TodoContext;
+
+            if (context != null) context.Dispose();
         }
     }
 }
