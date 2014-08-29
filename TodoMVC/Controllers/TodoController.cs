@@ -26,6 +26,7 @@ namespace TodoMVC.Controllers
         }
 
         // POST: /Todo/Create
+        [HttpPost]
         public ActionResult Create(Todo todoToCreate) {
             if (!ModelState.IsValid) {
                 var model = new TodoIndexModel(_todos.All(), todoToCreate);
@@ -39,6 +40,7 @@ namespace TodoMVC.Controllers
         }
 
         // POST: /Todo/Edit/:id
+        [HttpPost]
         public ActionResult Edit(int id, bool isDone) {
             var todo = _todos.Find(id);
             todo.IsDone = isDone;
@@ -49,6 +51,7 @@ namespace TodoMVC.Controllers
         }
 
         // POST: /Todo/Delete/:id
+        [HttpPost]
         public ActionResult Delete(int id) {
             var todoToRemove = _todos.Find(id);
             _todos.Remove(todoToRemove);
