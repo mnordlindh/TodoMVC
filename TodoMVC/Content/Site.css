@@ -80,3 +80,8 @@ textarea {
     cursor: pointer;
     text-decoration: none;
 }
+
+.todo-create-error {    
+    line-height: normal;
+    font-size: initial;
+}

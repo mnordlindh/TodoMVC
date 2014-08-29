@@ -6,6 +6,7 @@
 
 <div class="todos-holder">
     @using (Html.BeginForm("Create", "Todo", FormMethod.Post)) {
+        @Html.ValidationMessage("Text", new { @class = "text-danger todo-create-error" })
         <input type="text" name="Text" value="@Model.Todo.Text"/>
         <br />
         <input type="submit" class="btn btn-primary" value="Add Todo" />
