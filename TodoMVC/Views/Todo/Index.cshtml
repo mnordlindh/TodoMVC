@@ -14,7 +14,10 @@
         @foreach (var item in Model.Todos) {
             string doneClass = item.IsDone ? "todo-done" : "";
             <li class="todo  @doneClass">
-                <input type="checkbox" checked="@item.IsDone" class="todo-checkbox" />
+                @using (Html.BeginForm("Edit", "Todo", new { id = @item.Id }, FormMethod.Post, new { @class = "todo-edit-form" })) {                        
+                    <input type="checkbox" checked="@item.IsDone" class="todo-checkbox" name="IsDone" value="true"/>
+                    <input type="hidden" value="false" name="IsDone" />
+                }
                 <span>
                     @item.Text
                 </span>
@@ -22,3 +25,13 @@
         }
     </ul>
 </div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".todo-edit-form").on("change", function () {
+                $(this).submit();
+            });
+        });
+    </script>
+}

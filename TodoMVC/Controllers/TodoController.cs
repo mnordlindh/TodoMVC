@@ -38,5 +38,14 @@ namespace TodoMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        // POST: /Todo/Edit/:id
+        public ActionResult Edit(int id, bool isDone) {
+            var todo = _todos.Find(id);
+            todo.IsDone = isDone;
+
+            _todos.Edit(todo);
+
+            return RedirectToAction("Index");
+        }
     }
 }
