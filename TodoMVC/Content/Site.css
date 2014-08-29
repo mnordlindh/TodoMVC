@@ -29,7 +29,7 @@ textarea {
     text-align: center;
 }
 
-.todos-holder input[type="text"], input[type="button"] {
+.todos-holder input[type="text"], input[type="submit"] {
     width: 100%;
     max-width: none;
     font-size: 28px;

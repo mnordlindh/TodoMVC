@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TodoMVC.Models;
 using TodoMVC.Repositories;
+using TodoMVC.ViewModels;
 
 namespace TodoMVC.Controllers
 {
@@ -19,9 +20,23 @@ namespace TodoMVC.Controllers
         // GET: Todo
         public ActionResult Index()
         {
-            var todos = _todos.All();
+            var model = new TodoIndexModel(_todos.All());
 
-            return View(todos);
+            return View(model);
         }
+
+        // POST: /Todo/Create
+        public ActionResult Create(Todo todoToCreate) {
+            if (!ModelState.IsValid) {
+                var model = new TodoIndexModel(_todos.All(), todoToCreate);
+
+                return View("Index", model);
+            }
+
+            _todos.Add(todoToCreate);
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

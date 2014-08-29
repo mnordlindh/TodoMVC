@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TodoMVC.Models.Todo>
+﻿@model TodoMVC.ViewModels.TodoIndexModel
 
 @{
     ViewBag.Title = "Todos";
@@ -6,12 +6,12 @@
 
 <div class="todos-holder">
     @using (Html.BeginForm("Create", "Todo", FormMethod.Post)) {
-        <input type="text" />
+        <input type="text" name="Text" value="@Model.Todo.Text"/>
         <br />
-        <input type="button" class="btn btn-primary" value="Add Todo" />
+        <input type="submit" class="btn btn-primary" value="Add Todo" />
     }
     <ul class="todos col-centered">
-        @foreach (var item in Model) {
+        @foreach (var item in Model.Todos) {
             string doneClass = item.IsDone ? "todo-done" : "";
             <li class="todo  @doneClass">
                 <input type="checkbox" checked="@item.IsDone" class="todo-checkbox" />
