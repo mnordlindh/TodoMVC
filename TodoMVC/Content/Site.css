@@ -47,6 +47,7 @@ textarea {
 .todo {
     position: relative;
     padding-left: 40px;
+    padding-right: 40px;
     border-bottom: 1px solid #dbdbdb;
 }
 
@@ -62,4 +63,20 @@ textarea {
     margin: auto !important;
     width: 25px;
     height: 25px;
+    cursor: pointer;
+}
+
+.todo-delete-form input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 42px;
+    width: 42px;
+    padding: 5px;
+    line-height: normal;
+
+    cursor: pointer;
+    text-decoration: none;
 }

@@ -47,5 +47,13 @@ namespace TodoMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+        // POST: /Todo/Delete/:id
+        public ActionResult Delete(int id) {
+            var todoToRemove = _todos.Find(id);
+            _todos.Remove(todoToRemove);
+
+            return RedirectToAction("Index");
+        }
     }
 }

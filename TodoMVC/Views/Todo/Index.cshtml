@@ -21,6 +21,9 @@
                 <span>
                     @item.Text
                 </span>
+                @using (Html.BeginForm("Delete", "Todo", new { id = @item.Id }, FormMethod.Post, new { @class = "todo-delete-form" })) {
+                    <input type="submit" value="✖" class="btn btn-danger"/>
+                }
             </li>
         }
     </ul>
